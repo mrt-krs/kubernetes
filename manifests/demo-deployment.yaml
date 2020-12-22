@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    name: demo-deployment
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: demo-pod
+      app:  demo
+  template:
+    metadata:
+      name: demo-pod
+      labels:
+        name: demo-pod
+        app: demo
+    spec:
+      containers:
+        - name: demo-pod-container
+          image: andunearc/demo
+          ports:
+            - containerPort: 5000
